@@ -14,136 +14,133 @@
 }
 
 body{
-    background:#8d8d8d;
-    color:white;
+    background:#000;
+    color:#fff;
     display:flex;
     justify-content:center;
     align-items:center;
     min-height:100vh;
     padding:30px;
+    overflow:hidden;
 }
 
+/* Website */
 .container{
+    max-width:600px;
     width:100%;
-    max-width:650px;
-    background:#777;
-    border-radius:18px;
-    padding:35px;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    opacity:0;
+    transition:opacity .8s ease;
 }
 
 h1{
-    font-size:clamp(2.2rem,7vw,4rem);
-    text-align:center;
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+h2{
+    font-size:1.5rem;
     margin-bottom:10px;
 }
 
-.subtitle{
-    text-align:center;
-    opacity:.9;
-    margin-bottom:30px;
-    font-size:1rem;
-}
-
-.list{
-    background:#666;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:30px;
-}
-
-.list h2{
-    margin-bottom:15px;
-    font-size:1.6rem;
-}
-
 ul{
-    list-style:none;
-}
-
-li{
-    background:#5a5a5a;
-    padding:14px 18px;
-    border-radius:10px;
-    margin-bottom:12px;
-    font-size:1.1rem;
-    transition:.2s;
-}
-
-li:hover{
-    transform:translateX(6px);
-    background:#4f4f4f;
-}
-
-.footer{
-    text-align:center;
-    margin-top:15px;
-}
-
-.footer h2{
-    font-size:clamp(2rem,6vw,3.5rem);
-    margin-bottom:12px;
+    margin-left:20px;
+    margin-bottom:40px;
+    line-height:2;
+    font-size:1.2rem;
 }
 
 .footer p{
-    font-size:1.1rem;
+    color:#bdbdbd;
     line-height:1.6;
-    opacity:.95;
 }
 
-.small{
-    margin-top:20px;
-    opacity:.75;
-    font-size:.9rem;
-    font-style:italic;
+/* Flashbang */
+#flashbang{
+    position:fixed;
+    inset:0;
+    background:#fff;
+    color:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:9999;
+    transition:opacity .8s ease;
+    padding:20px;
 }
 
-@media (max-width:600px){
-    .container{
-        padding:25px;
+#flashbang h1{
+    font-size:clamp(2rem,6vw,4rem);
+    line-height:1.2;
+}
+
+@media(max-width:600px){
+    h1{
+        font-size:2.2rem;
     }
 
-    li{
+    ul{
         font-size:1rem;
+    }
+
+    #flashbang h1{
+        font-size:2rem;
     }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div id="flashbang">
+    <h1>
+        YOO WHAT'S UP DAD N MOM<br>
+        GET FLASH BANGED YO
+    </h1>
+</div>
 
-    <h1>🛒 Izzy's Shopping List</h1>
-    <p class="subtitle">Because apparently I became the family GPS today.</p>
+<div class="container" id="site">
 
-    <div class="list">
-        <h2>Today's Route</h2>
+    <h1>Izzy's Shopping List</h1>
 
-        <ul>
-            <li>📍 Avenues Mall</li>
-            <li>💻 Best Buy</li>
-            <li>🎮 GameStop (inside the mall, don't get lost)</li>
-            <li>🛒 Walmart</li>
-            <li>👟 Nike</li>
-            <li>➕ Etc. Etc. Etc...</li>
-        </ul>
-    </div>
+    <h2>Today's List</h2>
+
+    <ul>
+        <li>Avenues Mall</li>
+        <li>Best Buy</li>
+        <li>GameStop (Inside the Mall)</li>
+        <li>Walmart</li>
+        <li>Nike</li>
+        <li>Etc. Etc. Etc.</li>
+    </ul>
 
     <div class="footer">
-        <h2>Your Welcome Bob, Dad & Mom 😂✌🏾</h2>
-
+        <h2>You're Welcome Bob, Dad & Mom</h2>
         <p>
-            I made the shopping list so nobody can say
-            <strong>"Where are we going again?"</strong> every 4 minutes
-        </p>
-
-        <p class="small">
-            NMY STEP DAD IS BOBB<br>
-            blah blah blah
+            Hopefully nobody asks,<br>
+            "Where are we going again?" every five minutes 😂✌🏾
         </p>
     </div>
 
 </div>
+
+<script>
+window.addEventListener("load", () => {
+    const flash = document.getElementById("flashbang");
+    const site = document.getElementById("site");
+
+    // Keep the flashbang visible for 1.2 seconds
+    setTimeout(() => {
+        flash.style.opacity = "0";
+        site.style.opacity = "1";
+    }, 1200);
+
+    // Remove the flashbang after it fades away
+    setTimeout(() => {
+        flash.remove();
+        document.body.style.overflow = "auto";
+    }, 2000);
+});
+</script>
 
 </body>
 </html>
